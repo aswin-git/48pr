@@ -3,7 +3,7 @@
 from pathlib import Path
 import joblib
 
-from model import load_data, train_model, evaluate_model
+from ml_project.model import load_data, train_model, evaluate_model
 
 
 MODEL_PATH = Path("artifacts/iris_model.joblib")
