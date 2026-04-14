@@ -1,0 +1,16 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.pylint.main]
+py-version = "3.11"
+max-line-length = 100
+init-hook = "import sys; sys.path.append('src')"
+
+[tool.pylint.messages_control]
+disable = [
+    "missing-module-docstring",
+    "missing-function-docstring",
+    "missing-class-docstring",
+    "no-member"  # sklearn false positives
+]
