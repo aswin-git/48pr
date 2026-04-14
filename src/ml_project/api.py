@@ -25,21 +25,20 @@ def predict():
     try:
         data = request.get_json()
 
-        # Expect input like: {"features": [5.1, 3.5, 1.4, 0.2]}
+        if "features" not in data:
+            return jsonify({"error": "Missing 'features' key"}), 400
+
         features = np.array(data["features"])
+
+        if features.shape[0] != 4:
+            return jsonify({"error": "Expected 4 features"}), 400
 
         prediction = model.predict([features])[0]
 
-        return jsonify({
-            "prediction": int(prediction)
-        })
+        return jsonify({"prediction": int(prediction)})
 
-    except Exception as error:
-        return jsonify({
-            "error": str(error)
-        }), 400
-
+    except ValueError as error:
+        return jsonify({"error": str(error)}), 400
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-
