@@ -3,7 +3,7 @@
 from pathlib import Path
 import joblib
 
-from ml_project.model import load_data, train_model, evaluate_model
+from model import load_data, train_model, evaluate_model
 
 
 MODEL_PATH = Path("artifacts/iris_model.joblib")
@@ -24,3 +24,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
